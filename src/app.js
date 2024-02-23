@@ -45,7 +45,7 @@ app.get('/crew', (req, res) => {
 //Ajouter un équipage
 app.post('/crew', (req, res) => {
     const {crew_name, crew_description, crew_flag} = req.body
-    const query = 'INSERT INTO crew (crew_name, crew_description, crew_flag) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO crew (crew_name, crew_description, crew_flag) VALUES (?, ?, ?)';
     const values = [crew_name, crew_description, crew_flag]
     connection.query(query, values, (err, result) => {
         if (err) {
@@ -96,7 +96,7 @@ app.get('/pirate', (req, res) => {
 //Ajouter un personnage
 app.post('/pirate', (req, res) => {
     const {pir_name, pir_picture, pir_description} = req.body
-    const query = 'INSERT INTO pirate (pir_name, pir_picture, pir_description) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO pirate (pir_name, pir_picture, pir_description) VALUES (?, ?, ?)';
     const values = [pir_name, pir_picture, pir_description]
     connection.query(query, values, (err, result) => {
         if (err) {
@@ -146,7 +146,7 @@ app.get('/fruit', (req, res) => {
 //Ajouter un fruit du démon
 app.post('/fruit', (req, res) => {
     const { fruit_name, fruit_picture, fruit_description } = req.body
-    const query = 'INSERT INTO fruit (fruit_name, fruit_picture, fruit_description) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO fruit (fruit_name, fruit_picture, fruit_description) VALUES (?, ?, ?)';
     const values = [fruit_name, fruit_picture, fruit_description]
     connection.query(query, values, (err, result) => {
         if (err) {
