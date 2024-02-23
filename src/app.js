@@ -63,7 +63,7 @@ app.post('/crew', (req, res) => {
 app.delete('/crew/:id', (req, res) => {
     const id = req.params.id;
     const values = [id];
-    const query = `DELETE FROM "public"."crew" WHERE "crew_key" = $1`;
+    const query = `DELETE FROM crew WHERE crew_key = $1`;
     connection.query(query, values,(err, result) => {
         if (err) {
             console.error('Erreur lors de la suppression de l\'occurrence dans la table "crew" :', err);
@@ -96,7 +96,7 @@ app.get('/pirate', (req, res) => {
 //Ajouter un personnage
 app.post('/pirate', (req, res) => {
     const {pir_name, pir_picture, pir_description} = req.body
-    const query = 'INSERT INTO "public"."pirate" (pir_name, pir_picture, pir_description) VALUES ($1, $2, $3, $4)';
+    const query = 'INSERT INTO pirate (pir_name, pir_picture, pir_description) VALUES ($1, $2, $3)';
     const values = [pir_name, pir_picture, pir_description]
     connection.query(query, values, (err, result) => {
         if (err) {
@@ -113,7 +113,7 @@ app.post('/pirate', (req, res) => {
 app.delete('/pirate/:id', (req, res) => {
     const id = req.params.id;
     const values = [id];
-    const query = `DELETE FROM "public"."pirate" WHERE "pir_key" = $1`;
+    const query = `DELETE FROM pirate WHERE pir_key = $1`;
     connection.query(query, values,(err, result) => {
         if (err) {
             console.error('Erreur lors de la suppression de l\'occurrence dans la table "pirate" :', err);
@@ -146,7 +146,7 @@ app.get('/fruit', (req, res) => {
 //Ajouter un fruit du démon
 app.post('/fruit', (req, res) => {
     const { fruit_name, fruit_picture, fruit_description } = req.body
-    const query = 'INSERT INTO "public"."fruit" (fruit_name, fruit_picture, fruit_description) VALUES ($1, $2, $3)';
+    const query = 'INSERT INTO fruit (fruit_name, fruit_picture, fruit_description) VALUES ($1, $2, $3)';
     const values = [fruit_name, fruit_picture, fruit_description]
     connection.query(query, values, (err, result) => {
         if (err) {
@@ -162,7 +162,7 @@ app.post('/fruit', (req, res) => {
 app.delete('/fruit/:id', (req, res) => {
     const id = req.params.id;
     const values = [id];
-    const query = `DELETE FROM "public"."fruit" WHERE "fruit_key" = $1`;
+    const query = `DELETE FROM fruit WHERE fruit_key = $1`;
     connection.query(query, values,(err, result) => {
         if (err) {
             console.error('Erreur lors de la suppression de l\'occurrence dans la table "fruit" :', err);
